@@ -8,14 +8,8 @@ class LinkedList
   end
 
   def add_first(value)
-    new_node = Node.new(value)
-    if @head.nil?
-      @head = new_node
-    else
-      new_node.next = @head
-      @head = new_node
-    end
-    return new_node.data
+    @head = Node.new(value, @head)
+    return @head.data
   end
 
   def get_first
@@ -73,6 +67,7 @@ class LinkedList
     else
       count = 0
       current = @head
+
       while count < index
         if current.next.nil?
           # if there are less nodes that index
@@ -82,7 +77,9 @@ class LinkedList
           count += 1
         end
       end
+
       return current.data
+      
     end
   end
 
