@@ -20,7 +20,18 @@ class LinkedList
   end
 
   def add_last(value)
-
+    newNode = Node.new(value)
+    if @head.nil?
+      # List is empty
+      @head = newNode
+    else
+      # List is not empty
+      current = @head
+      until current.next.nil?
+        current = current.next
+      end
+      current.next = newNode
+    end
   end
 
   def get_last
